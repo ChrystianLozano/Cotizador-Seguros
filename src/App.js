@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import Header from './components/Header'
 import Formulario from "./components/Formulario";
 import Resumen from "./components/Resumen";
+import Resultado from "./components/Resultado";
 
 import styled from '@emotion/styled'
 
@@ -26,26 +27,20 @@ function App() {
     }
   })
 
-  const {datos} = resumen
+  const { cotizacion, datos } = resumen;
 
 
 
   return (
-  <Contenedor>
-    <Header
-      titulo = "Cotizador de Seguros"
-    />
+    <Contenedor>
+      <Header titulo="Cotizador de Seguros" />
 
-    <ContenedorFormulario>
-        <Formulario
-          guardarResumen = {guardarResumen}
-        />
-        <Resumen 
-          datos= {datos}
-        />
-    </ContenedorFormulario>
-  </Contenedor>
-
+      <ContenedorFormulario>
+        <Formulario guardarResumen={guardarResumen} />
+        <Resumen datos={datos} />
+        <Resultado cotizacion ={cotizacion}/>
+      </ContenedorFormulario>
+    </Contenedor>
   );
 }
 
