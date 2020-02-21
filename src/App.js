@@ -7,6 +7,7 @@ import styled from '@emotion/styled'
 const Contenedor = styled.div`
   max-width: 600px;
   margin: 0 auto;
+  padding-top: 50px;
 ` 
 const ContenedorFormulario = styled.div`
   background-color: #FFF;
