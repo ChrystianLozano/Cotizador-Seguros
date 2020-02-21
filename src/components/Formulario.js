@@ -5,6 +5,7 @@ const Campo = styled.div`
     display: flex;
     margin-bottom: 1rem;
     align-items: center;
+    margin-top: 1rem;
 `
 const Label = styled.label`
     flex: 0 0 100px;
@@ -38,6 +39,15 @@ const Boton = styled.button`
     }
 `
 
+const Error = styled.div`
+    background-color: red;
+    color: white;
+    padding: 1rem;
+    margin-bottom: 25px:
+    width: 100%;
+    text-align: center;
+`;
+
 
 const Formulario = () => {
 
@@ -46,6 +56,7 @@ const Formulario = () => {
         year: '',
         plan: ''
     })
+    const [error, guardarError] = useState(false)
 
 
     //extraer los valores del state
@@ -58,11 +69,56 @@ const Formulario = () => {
         ...datos,
         [e.target.name]: e.target.value
       })
+      guardarError(false)
     }
 
 
+    //cando el usuario oprime boton
+    const cotizarSeguro = e => {
+      e.preventDefault();
+      if(marca.trim() === '' ||  year.trim() === '' || plan.trim() === ''){
+        guardarError(true)
+        return
+      }
+
+      guardarError(false)
+
+
+      //obtener la diferencia de años
+
+
+      // por cada año hay que restar el 3%
+
+
+      // Americano 15%
+
+
+      //Asiatico 5%
+
+      //europeo 30%
+
+
+      //Basico aumenta 20%
+
+
+      //completo 50%
+
+
+      //total
+      
+
+
+
+    }
+
     return (
-      <form>
+      <form
+      
+      onSubmit= {cotizarSeguro}
+      
+      >
+
+        { error ? <Error>Todos los campos son obligatorios</Error> : null}
         <Campo>
           <Label>Marca </Label>
           <Select name="marca" value={marca} onChange={obtenerInformacion}>
@@ -110,7 +166,7 @@ const Formulario = () => {
           Completo
         </Campo>
 
-        <Boton type="button">Cotizar</Boton>
+        <Boton type="submit">Cotizar</Boton>
       </form>
     );
 }
